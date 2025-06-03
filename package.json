@@ -1,6 +1,6 @@
 {
   "name": "ios-haptics",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "devDependencies": {
@@ -19,6 +19,7 @@
     "build": "tsdown",
     "dev": "tsdown --watch"
   },
+  "keywords": ["haptic", "ios", "feedback", "haptic-feedback", "taptic", "safari", "ios", "vibrate"],
   "type": "module",
   "types": "./dist/index.d.ts"
 }
