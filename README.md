@@ -3,6 +3,8 @@
 A small JavaScript utility for triggering subtle haptic feedback on iOS devices,
 using a clever browser-specific quirk.
 
+try it here: https://codepen.io/tijnjh/pen/KwpgPqB
+
 ## 🚀 Installation
 
 ```sh
