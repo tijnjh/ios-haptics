@@ -1,25 +1,34 @@
 {
   "name": "ios-haptics",
-  "version": "0.0.3",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "devDependencies": {
-    "tsdown": "latest",
-    "typescript": "^5.8.3"
-  },
+  "version": "0.0.4",
+  "description": "haptic feedback for ios safari",
+  "keywords": [
+    "haptic",
+    "ios",
+    "feedback",
+    "haptic-feedback",
+    "taptic",
+    "safari",
+    "vibrate"
+  ],
+  "repository": "tijnjh/ios-haptics",
+  "author": "tijnjh",
+  "type": "module",
   "exports": {
     ".": "./dist/index.js",
     "./package.json": "./package.json"
   },
-  "description": "haptic feedback for ios safari",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsdown",
-    "dev": "tsdown --watch"
+    "build": "tsdown"
   },
-  "keywords": ["haptic", "ios", "feedback", "haptic-feedback", "taptic", "safari", "ios", "vibrate"],
-  "type": "module",
-  "types": "./dist/index.d.ts"
+  "devDependencies": {
+    "tsdown": "latest",
+    "typescript": "^5.8.3"
+  }
 }

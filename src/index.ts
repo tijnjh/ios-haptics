@@ -1,6 +1,9 @@
 // largely from cobalt.tools source code:
 // https://github.com/imputnet/cobalt/blob/main/web/src/lib/haptics.ts
 
+/**
+ * A single haptic "click"
+ */
 const haptic = () => {
   try {
     const label = document.createElement("label");
@@ -15,14 +18,22 @@ const haptic = () => {
     document.head.appendChild(label);
     label.click();
     document.head.removeChild(label);
-  } catch {}
+  } catch {
+    // do nothing
+  }
 };
 
+/**
+ * Two rapid haptics (good for confirmation)
+ */
 haptic.confirm = () => {
   haptic();
   setTimeout(() => haptic(), 120);
 };
 
+/**
+ * Three rapid haptics (useful for errors)
+ */
 haptic.error = () => {
   haptic();
   setTimeout(() => haptic(), 120);

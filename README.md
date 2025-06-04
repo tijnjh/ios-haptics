@@ -8,7 +8,7 @@ try it here: https://codepen.io/tijnjh/pen/KwpgPqB
 ## 🚀 Installation
 
 ```sh
-npm install ios-haptics
+npm i ios-haptics
 ```
 
 ## 📦 Usage
