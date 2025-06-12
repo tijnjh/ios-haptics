@@ -1,6 +1,6 @@
 {
   "name": "ios-haptics",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "haptic feedback for ios safari",
   "keywords": [
     "haptic",
