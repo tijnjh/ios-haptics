@@ -1,6 +1,12 @@
+
 # ios-haptics
 
 javascript library for haptic feedback inside of safari on ios
+
+![GitHub last commit](https://img.shields.io/github/last-commit/tijnjh/ios-haptics)
+[![npm version](https://img.shields.io/npm/v/tsuite.svg)](https://npmjs.com/package/ios-haptics)
+![NPM Downloads](https://img.shields.io/npm/dm/ios-haptics)
+![npm package minimized gzipped size](https://img.shields.io/bundlejs/size/ios-haptics)
 
 demo: https://codepen.io/tijnjh/pen/KwpgPqB
 
