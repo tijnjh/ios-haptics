@@ -1,4 +1,3 @@
-
 # ios-haptics
 
 javascript library for haptic feedback inside of safari on ios
@@ -19,16 +18,16 @@ npm i ios-haptics
 ## usage
 
 ```javascript
-import { haptic } from "ios-haptics";
+import { haptic } from 'ios-haptics'
 
-// a single haptic 
-haptic();
+// a single haptic
+haptic()
 
 // two rapid haptics (good for confirmation)
-haptic.confirm();
+haptic.confirm()
 
 // three rapid haptics (useful for errors)
-haptic.error();
+haptic.error()
 ```
 
 ## how it works

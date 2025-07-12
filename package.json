@@ -1,7 +1,11 @@
 {
   "name": "ios-haptics",
-  "version": "0.0.8",
+  "type": "module",
+  "version": "0.0.9",
   "description": "haptic feedback for ios safari",
+  "author": "tijnjh",
+  "license": "MIT",
+  "repository": "tijnjh/ios-haptics",
   "keywords": [
     "haptic",
     "ios",
@@ -11,25 +15,24 @@
     "safari",
     "vibrate"
   ],
-  "repository": "tijnjh/ios-haptics",
-  "license": "MIT",
-  "author": "tijnjh",
-  "type": "module",
   "exports": {
-    ".": "./dist/index.js",
-    "./package.json": "./package.json"
+    ".": {
+      "types": "./dist/index.d.cts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
   },
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/index.d.cts",
   "files": [
     "dist"
   ],
-  "scripts": {
-    "build": "tsdown"
-  },
   "devDependencies": {
-    "tsdown": "latest",
-    "typescript": "^5.8.3"
-  }
+    "@antfu/eslint-config": "^4.16.2",
+    "eslint": "^9.31.0",
+    "typescript": "^5.8.3",
+    "zshy": "^0.2.3"
+  },
+  "zshy": "./src/index.ts"
 }
