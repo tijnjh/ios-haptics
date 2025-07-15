@@ -34,7 +34,7 @@ haptic.error()
 
 this uses the `<input type="checkbox" switch />` (introduced in safari 17.4), which has haptic feedback when toggled
 
-every `haptic` call, it will create one of those in the background, toggle it (which has haptic feedback), then remove it
+every `haptic` call, it will create one of those in the background, toggle it, then remove it
 
 ---
 
