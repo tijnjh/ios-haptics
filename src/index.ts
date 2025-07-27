@@ -6,6 +6,11 @@
 
 function haptic() {
   try {
+    if (navigator.vibrate) {
+      navigator.vibrate(50);
+      return;
+    }
+
     const labelEl = document.createElement('label')
     labelEl.ariaHidden = 'true'
     labelEl.style.display = 'none'
