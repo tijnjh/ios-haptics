@@ -6,6 +6,11 @@
 
 function haptic() {
   try {
+    if (navigator.vibrate) {
+      navigator.vibrate(50);
+      return;
+    }
+
     const labelEl = document.createElement('label')
     labelEl.ariaHidden = 'true'
     labelEl.style.display = 'none'
@@ -25,11 +30,21 @@ function haptic() {
 };
 
 haptic.confirm = () => {
+  if (navigator.vibrate) {
+    navigator.vibrate([50, 70, 50]);
+    return;
+  }
+
   haptic()
   setTimeout(() => haptic(), 120)
 }
 
 haptic.error = () => {
+  if (navigator.vibrate) {
+    navigator.vibrate([50, 70, 50, 70, 50]);
+    return;
+  }
+
   haptic()
   setTimeout(() => haptic(), 120)
   setTimeout(() => haptic(), 240)
