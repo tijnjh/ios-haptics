@@ -1,7 +1,7 @@
 {
   "name": "ios-haptics",
   "type": "module",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "haptic feedback for ios safari",
   "author": "tijnjh",
   "license": "MIT",

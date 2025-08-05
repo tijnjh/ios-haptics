@@ -1,5 +1,5 @@
 /**
- * ios-haptics v0.0.9
+ * ios-haptics v0.1.0
  * tijn.dev
  * @license MIT
  */
@@ -7,8 +7,8 @@
 function haptic() {
   try {
     if (navigator.vibrate) {
-      navigator.vibrate(50);
-      return;
+      navigator.vibrate(50)
+      return
     }
 
     const labelEl = document.createElement('label')
@@ -31,8 +31,8 @@ function haptic() {
 
 haptic.confirm = () => {
   if (navigator.vibrate) {
-    navigator.vibrate([50, 70, 50]);
-    return;
+    navigator.vibrate([50, 70, 50])
+    return
   }
 
   haptic()
@@ -41,8 +41,8 @@ haptic.confirm = () => {
 
 haptic.error = () => {
   if (navigator.vibrate) {
-    navigator.vibrate([50, 70, 50, 70, 50]);
-    return;
+    navigator.vibrate([50, 70, 50, 70, 50])
+    return
   }
 
   haptic()
