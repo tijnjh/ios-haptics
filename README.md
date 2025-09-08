@@ -23,10 +23,10 @@ import { haptic } from 'ios-haptics'
 // a single haptic
 haptic()
 
-// two rapid haptics (good for confirmation)
+// two rapid haptics
 haptic.confirm()
 
-// three rapid haptics (useful for errors)
+// three rapid haptics
 haptic.error()
 ```
 
@@ -35,6 +35,8 @@ haptic.error()
 this uses the `<input type="checkbox" switch />` (introduced in safari 17.4), which has haptic feedback when toggled
 
 every `haptic` call, it will create one of those in the background, toggle it, then remove it
+
+on devices that support it, `navigator.vibrate()` is called instead, so it works on android too
 
 ---
 

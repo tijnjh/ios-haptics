@@ -1,9 +1,3 @@
-/**
- * ios-haptics v0.1.0
- * tijn.dev
- * @license MIT
- */
-
 function haptic() {
   try {
     if (navigator.vibrate) {
@@ -27,7 +21,7 @@ function haptic() {
   catch {
     // do nothing
   }
-};
+}
 
 haptic.confirm = () => {
   if (navigator.vibrate) {
@@ -50,4 +44,45 @@ haptic.error = () => {
   setTimeout(() => haptic(), 240)
 }
 
-export { haptic }
+// prevent intellisense from being unhelpful
+declare interface Haptic {
+  /** @deprecated */
+  apply: never
+
+  /** @deprecated */
+  arguments: never
+
+  /** @deprecated */
+  bind: never
+
+  /** @deprecated */
+  call: never
+
+  /** @deprecated */
+  caller: never
+
+  /** @deprecated */
+  length: never
+
+  /** @deprecated */
+  name: never
+
+  /** @deprecated */
+  prototype: never
+
+  /** @deprecated */
+  toString: never
+
+  /**  a single haptic */
+  (): void
+
+  /** two rapid haptics */
+  confirm: () => void
+
+  /** three rapid haptics */
+  error: () => void
+}
+
+const h: Haptic = haptic as any
+
+export { h as haptic }
