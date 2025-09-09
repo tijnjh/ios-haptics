@@ -1,4 +1,4 @@
-function haptic() {
+function _haptic() {
   try {
     if (navigator.vibrate) {
       navigator.vibrate(50)
@@ -23,29 +23,29 @@ function haptic() {
   }
 }
 
-haptic.confirm = () => {
+_haptic.confirm = () => {
   if (navigator.vibrate) {
     navigator.vibrate([50, 70, 50])
     return
   }
 
-  haptic()
-  setTimeout(() => haptic(), 120)
+  _haptic()
+  setTimeout(() => _haptic(), 120)
 }
 
-haptic.error = () => {
+_haptic.error = () => {
   if (navigator.vibrate) {
     navigator.vibrate([50, 70, 50, 70, 50])
     return
   }
 
-  haptic()
-  setTimeout(() => haptic(), 120)
-  setTimeout(() => haptic(), 240)
+  _haptic()
+  setTimeout(() => _haptic(), 120)
+  setTimeout(() => _haptic(), 240)
 }
 
 // prevent intellisense from being unhelpful
-declare interface Haptic {
+interface haptic {
   /** @deprecated */
   apply: never
 
@@ -73,6 +73,9 @@ declare interface Haptic {
   /** @deprecated */
   toString: never
 
+  /** @deprecated */
+  Symbol: never
+
   /**  a single haptic */
   (): void
 
@@ -81,8 +84,9 @@ declare interface Haptic {
 
   /** three rapid haptics */
   error: () => void
+
 }
 
-const h: Haptic = haptic as any
+const __haptic = _haptic as haptic
 
-export { h as haptic }
+export { __haptic as haptic }

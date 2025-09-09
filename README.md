@@ -1,4 +1,4 @@
-# ios-haptics
+# 📳 ios-haptics
 
 javascript library for haptic feedback inside of safari on ios
 
@@ -9,13 +9,13 @@ javascript library for haptic feedback inside of safari on ios
 
 demo: [ios-haptics demo](https://codepen.io/tijnjh/pen/KwpgPqB)
 
-## installation
+## 📦 installation
 
 ```sh
 npm i ios-haptics
 ```
 
-## usage
+## 🚀 usage
 
 ```javascript
 import { haptic } from 'ios-haptics'
@@ -30,7 +30,7 @@ haptic.confirm()
 haptic.error()
 ```
 
-## how it works
+## ⚙️ how it works
 
 this uses the `<input type="checkbox" switch />` (introduced in safari 17.4), which has haptic feedback when toggled
 
@@ -40,5 +40,5 @@ on devices that support it, `navigator.vibrate()` is called instead, so it works
 
 ---
 
-Feel free to send a PR or open an issue if you have suggestions or find
-improvements.
+feel free to send a pr or open an issue if you have suggestions or find
+improvements
