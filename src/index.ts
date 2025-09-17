@@ -1,7 +1,13 @@
+export const supportsHaptics = window.matchMedia('(pointer: coarse)').matches
+
 function _haptic() {
   try {
     if (navigator.vibrate) {
       navigator.vibrate(50)
+      return
+    }
+
+    if (!supportsHaptics) {
       return
     }
 
@@ -84,7 +90,6 @@ interface haptic {
 
   /** three rapid haptics */
   error: () => void
-
 }
 
 const __haptic = _haptic as haptic
