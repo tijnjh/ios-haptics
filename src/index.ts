@@ -1,97 +1,94 @@
-export const supportsHaptics = window.matchMedia('(pointer: coarse)').matches
+export const supportsHaptics = window.matchMedia("(pointer: coarse)").matches;
 
 function _haptic() {
   try {
     if (navigator.vibrate) {
-      navigator.vibrate(50)
-      return
+      navigator.vibrate(50);
+      return;
     }
 
-    if (!supportsHaptics) {
-      return
-    }
+    if (!supportsHaptics) return;
 
-    const labelEl = document.createElement('label')
-    labelEl.ariaHidden = 'true'
-    labelEl.style.display = 'none'
+    const labelEl = document.createElement("label");
+    labelEl.ariaHidden = "true";
+    labelEl.style.display = "none";
 
-    const inputEl = document.createElement('input')
-    inputEl.type = 'checkbox'
-    inputEl.setAttribute('switch', '')
-    labelEl.appendChild(inputEl)
+    const inputEl = document.createElement("input");
+    inputEl.type = "checkbox";
+    inputEl.setAttribute("switch", "");
+    labelEl.appendChild(inputEl);
 
-    document.head.appendChild(labelEl)
-    labelEl.click()
-    document.head.removeChild(labelEl)
-  }
-  catch {
+    document.head.appendChild(labelEl);
+    labelEl.click();
+    document.head.removeChild(labelEl);
+  } catch {
     // do nothing
   }
 }
 
 _haptic.confirm = () => {
   if (navigator.vibrate) {
-    navigator.vibrate([50, 70, 50])
-    return
+    navigator.vibrate([50, 70, 50]);
+    return;
   }
 
-  _haptic()
-  setTimeout(() => _haptic(), 120)
-}
+  _haptic();
+  setTimeout(() => _haptic(), 120);
+};
 
 _haptic.error = () => {
   if (navigator.vibrate) {
-    navigator.vibrate([50, 70, 50, 70, 50])
-    return
+    navigator.vibrate([50, 70, 50, 70, 50]);
+    return;
   }
 
-  _haptic()
-  setTimeout(() => _haptic(), 120)
-  setTimeout(() => _haptic(), 240)
-}
+  _haptic();
+  setTimeout(() => _haptic(), 120);
+  setTimeout(() => _haptic(), 240);
+};
 
 // prevent intellisense from being unhelpful
 interface haptic {
   /** @deprecated */
-  apply: never
+  apply: never;
 
   /** @deprecated */
-  arguments: never
+  arguments: never;
 
   /** @deprecated */
-  bind: never
+  bind: never;
 
   /** @deprecated */
-  call: never
+  call: never;
 
   /** @deprecated */
-  caller: never
+  caller: never;
 
   /** @deprecated */
-  length: never
+  length: never;
 
   /** @deprecated */
-  name: never
+  name: never;
 
   /** @deprecated */
-  prototype: never
+  prototype: never;
 
   /** @deprecated */
-  toString: never
+  toString: never;
 
   /** @deprecated */
-  Symbol: never
+  Symbol: never;
 
   /**  a single haptic */
-  (): void
+  (): void;
 
   /** two rapid haptics */
-  confirm: () => void
+  confirm: () => void;
 
   /** three rapid haptics */
-  error: () => void
+  error: () => void;
 }
 
-const __haptic = _haptic as haptic
+const __haptic = _haptic as haptic;
 
-export { __haptic as haptic }
+export { __haptic as haptic };
