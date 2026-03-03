@@ -1,5 +1,4 @@
 import { defineConfig } from 'tsdown'
-
 import pkg from './package.json' with { type: 'json' }
 
 const banner = `/**
@@ -9,8 +8,14 @@ const banner = `/**
 **/`
 
 export default defineConfig({
-  entry: ['./src/index.ts', './src/index.d.ts'],
+  entry: [
+    './src/index.ts',
+    './src/react.ts',
+    './src/vue.ts',
+    './src/svelte.ts',
+  ],
   platform: 'neutral',
   outputOptions: { banner },
   dts: true,
+  external: ['react', 'vue', 'svelte'],
 })

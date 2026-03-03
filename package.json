@@ -1,7 +1,7 @@
 {
   "name": "ios-haptics",
   "type": "module",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "haptic feedback for ios safari",
   "author": "tijnjh",
   "license": "MIT",
@@ -13,12 +13,27 @@
     "haptic-feedback",
     "taptic",
     "safari",
-    "vibrate"
+    "vibrate",
+    "react",
+    "vue",
+    "svelte"
   ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js"
+    },
+    "./vue": {
+      "types": "./dist/vue.d.ts",
+      "import": "./dist/vue.js"
+    },
+    "./svelte": {
+      "types": "./dist/svelte.d.ts",
+      "import": "./dist/svelte.js"
     }
   },
   "main": "./dist/index.js",
@@ -30,6 +45,16 @@
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch"
+  },
+  "peerDependencies": {
+    "react": ">=17",
+    "svelte": ">=4",
+    "vue": ">=3"
+  },
+  "peerDependenciesMeta": {
+    "react": { "optional": true },
+    "vue": { "optional": true },
+    "svelte": { "optional": true }
   },
   "devDependencies": {
     "tsdown": "latest"
