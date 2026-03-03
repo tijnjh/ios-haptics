@@ -1,44 +1,51 @@
 # 📳 ios-haptics
 
-javascript library for haptic feedback inside of safari on ios
+A lightweight JavaScript library for triggering haptic feedback in Safari on iOS — and on Android too.
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/tijnjh/ios-haptics)
 [![npm version](https://img.shields.io/npm/v/ios-haptics.svg)](https://npmjs.com/package/ios-haptics)
 ![NPM Downloads](https://img.shields.io/npm/dm/ios-haptics)
 ![npm package minimized gzipped size](https://img.shields.io/bundlejs/size/ios-haptics)
 
-demo: [ios-haptics demo](https://codepen.io/tijnjh/pen/KwpgPqB)
+🎮 **[Live Demo on CodePen](https://codepen.io/tijnjh/pen/KwpgPqB)**
 
-## 📦 installation
+---
+
+## 📦 Installation
 
 ```sh
 npm i ios-haptics
 ```
 
-## 🚀 usage
+---
+
+## 🚀 Usage
 
 ```javascript
 import { haptic } from 'ios-haptics'
 
-// a single haptic
+// Single haptic pulse
 haptic()
 
-// two rapid haptics
+// Two rapid pulses (confirm)
 haptic.confirm()
 
-// three rapid haptics
+// Three rapid pulses (error)
 haptic.error()
 ```
 
-## ⚙️ how it works
+---
 
-this uses the `<input type="checkbox" switch />` (introduced in safari 17.4), which has haptic feedback when toggled
+## ⚙️ How it works
 
-every `haptic` call, it will create one of those in the background, toggle it, then remove it
+iOS Safari doesn't expose the Vibration API, but it *does* trigger haptic feedback when toggling a `<input type="checkbox" switch />` element — a feature introduced in Safari 17.4.
 
-on devices that support it, `navigator.vibrate()` is called instead, so it works on android too
+Each `haptic()` call dynamically creates one of these inputs in the background, toggles it, and immediately removes it — giving you a clean, side-effect-free haptic tap.
+
+On Android, `navigator.vibrate()` is used instead, so it works cross-platform out of the box.
 
 ---
 
-feel free to send a pr or open an issue if you have suggestions or find
-improvements
+## 🤝 Contributing
+
+PRs and issues are welcome! If you have suggestions or find improvements, feel free to open one.
