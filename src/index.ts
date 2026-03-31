@@ -1,97 +1,117 @@
-export const supportsHaptics =
-  typeof window === "undefined"
+export const supportsHaptics
+  = typeof window === 'undefined'
     ? false
-    : window.matchMedia("(pointer: coarse)").matches;
+    : window.matchMedia('(pointer: coarse)').matches
+
+/** INTERNAL */
+export function triggerAndroidHaptic() {
+  try {
+    if (!supportsHaptics)
+      return
+
+    if (navigator.vibrate) {
+      navigator.vibrate(50)
+    }
+  }
+  catch {
+    // do nothing
+  }
+}
 
 function _haptic() {
   try {
     if (navigator.vibrate) {
-      navigator.vibrate(50);
-      return;
+      navigator.vibrate(50)
+      return
     }
 
-    if (!supportsHaptics) return;
+    if (!supportsHaptics)
+      return
 
-    const labelEl = document.createElement("label");
-    labelEl.ariaHidden = "true";
-    labelEl.style.display = "none";
+    const labelEl = document.createElement('label')
+    labelEl.ariaHidden = 'true'
+    labelEl.style.display = 'none'
 
-    const inputEl = document.createElement("input");
-    inputEl.type = "checkbox";
-    inputEl.setAttribute("switch", "");
-    labelEl.appendChild(inputEl);
+    const inputEl = document.createElement('input')
+    inputEl.type = 'checkbox'
+    inputEl.setAttribute('switch', '')
+    labelEl.appendChild(inputEl)
 
-    document.head.appendChild(labelEl);
-    labelEl.click();
-    document.head.removeChild(labelEl);
-  } catch {
+    document.head.appendChild(labelEl)
+    labelEl.click()
+    document.head.removeChild(labelEl)
+  }
+  catch {
     // do nothing
   }
 }
 
 _haptic.confirm = () => {
   if (navigator.vibrate) {
-    navigator.vibrate([50, 70, 50]);
-    return;
+    navigator.vibrate([50, 70, 50])
+    return
   }
 
-  _haptic();
-  setTimeout(() => _haptic(), 120);
-};
+  _haptic()
+  setTimeout(_haptic, 120)
+}
 
 _haptic.error = () => {
   if (navigator.vibrate) {
-    navigator.vibrate([50, 70, 50, 70, 50]);
-    return;
+    navigator.vibrate([50, 70, 50, 70, 50])
+    return
   }
 
-  _haptic();
-  setTimeout(() => _haptic(), 120);
-  setTimeout(() => _haptic(), 240);
-};
-
-// prevent intellisense from being unhelpful
-interface haptic {
-  /** @deprecated */
-  apply: never;
-
-  /** @deprecated */
-  arguments: never;
-
-  /** @deprecated */
-  bind: never;
-
-  /** @deprecated */
-  call: never;
-
-  /** @deprecated */
-  caller: never;
-
-  /** @deprecated */
-  length: never;
-
-  /** @deprecated */
-  name: never;
-
-  /** @deprecated */
-  prototype: never;
-
-  /** @deprecated */
-  toString: never;
-
-  /** @deprecated */
-  Symbol: never;
-
-  /**  a single haptic */
-  (): void;
-
-  /** two rapid haptics */
-  confirm: () => void;
-
-  /** three rapid haptics */
-  error: () => void;
+  _haptic()
+  setTimeout(_haptic, 120)
+  setTimeout(_haptic, 240)
 }
 
-const __haptic = _haptic as haptic;
+interface haptic {
+  /** @deprecated */
+  apply: never
 
-export { __haptic as haptic };
+  /** @deprecated */
+  arguments: never
+
+  /** @deprecated */
+  bind: never
+
+  /** @deprecated */
+  call: never
+
+  /** @deprecated */
+  caller: never
+
+  /** @deprecated */
+  length: never
+
+  /** @deprecated */
+  name: never
+
+  /** @deprecated */
+  prototype: never
+
+  /** @deprecated */
+  toString: never
+
+  /** @deprecated */
+  Symbol: never
+
+  /**  a single haptic */
+  (): void
+
+  /** two rapid haptics */
+  confirm: () => void
+
+  /** three rapid haptics */
+  error: () => void
+}
+
+/**
+ * @deprecated
+ * doesn't work in safari 26.5 and above, use the framework-specific HapticTrigger component instead
+ */
+const __haptic = _haptic as haptic
+
+export { __haptic as haptic }
