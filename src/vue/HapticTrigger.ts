@@ -1,17 +1,19 @@
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, renderSlot } from 'vue'
 import { triggerAndroidHaptic } from '..'
 
 export default defineComponent({
   name: 'HapticTrigger',
 
-  setup: () => {
-    return h('label', [
-      h('input', {
-        type: 'checkbox',
-        style: 'display: none;',
-        onChange: triggerAndroidHaptic,
-      }),
-      h('slot'),
-    ])
+  setup(_, { slots, attrs }) {
+    return () =>
+      h('label', attrs, [
+        h('input', {
+          type: 'checkbox',
+          switch: true,
+          style: 'display: none;',
+          onChange: triggerAndroidHaptic,
+        }),
+        renderSlot(slots, 'default'),
+      ])
   },
 })

@@ -19,33 +19,27 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
     "./react": {
       "types": "./dist/react/index.d.ts",
-      "import": "./dist/react/index.mjs",
-      "require": "./dist/react/index.js"
+      "import": "./dist/react/index.js",
+      "require": "./dist/react/index.cjs"
     },
     "./vue": {
-      "types": {
-        "import": "./dist/vue/index.d.mts",
-        "require": "./dist/vue/index.d.ts"
-      },
-      "import": "./dist/vue/index.mjs",
-      "require": "./dist/vue/index.js"
+      "types": "./dist/vue/index.d.ts",
+      "import": "./dist/vue/index.js",
+      "require": "./dist/vue/index.cjs"
     },
     "./svelte": {
-      "types": {
-        "import": "./dist/svelte/index.d.mts",
-        "require": "./dist/svelte/index.d.ts"
-      },
+      "types": "./dist/svelte/index.d.ts",
       "svelte": "./dist/svelte/index.mjs",
       "import": "./dist/svelte/index.mjs",
       "require": "./dist/svelte/index.js"
     }
   },
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
