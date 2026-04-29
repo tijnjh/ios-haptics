@@ -1,5 +1,5 @@
 export const supportsHaptics =
-  typeof window === "undefined"
+  typeof window === "undefined" || typeof window.matchMedia !== "function"
     ? false
     : window.matchMedia("(pointer: coarse)").matches;
 
