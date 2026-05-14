@@ -30,6 +30,51 @@ haptic.confirm()
 haptic.error()
 ```
 
+## Angular
+
+Angular support is available through `ios-haptics/angular`.
+
+Preferred usage — directive on a native `<label>`:
+
+```html
+<label hapticTrigger class="button-like">
+  Like
+</label>
+```
+
+```ts
+import { Component } from '@angular/core'
+import { HapticTriggerDirective } from 'ios-haptics/angular'
+
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [HapticTriggerDirective],
+  template: `
+    <label hapticTrigger class="button-like">
+      Like
+    </label>
+  `,
+})
+export class ExampleComponent {}
+```
+
+Component usage is also available:
+
+```html
+<haptic-trigger>
+  Like
+</haptic-trigger>
+```
+
+```ts
+import { HapticTriggerComponent } from 'ios-haptics/angular'
+```
+
+The Angular trigger is interaction-driven. It is not a replacement for the deprecated imperative `haptic()` API on iOS 26.5+.
+
+---
+
 ## ⚙️ how it works
 
 this uses the `<input type="checkbox" switch />` (introduced in safari 17.4), which has haptic feedback when toggled

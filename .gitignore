@@ -1,2 +1,3 @@
 node_modules/
 dist/
+.angular_build_tmp/
