@@ -1,47 +1,42 @@
-import type { Options } from 'tsup'
 import { defineConfig } from 'tsup'
 
-export default defineConfig((options) => {
-  const configs: Options[] = [
-    // react
-    {
-      entry: {
-        'react/index': 'src/react/index.ts',
-      },
-      format: ['cjs', 'esm'],
-      dts: true,
-      target: 'es2022',
-      treeshake: true,
-      external: ['react', 'react/jsx-runtime'],
-      minify: !options.watch,
-      banner: { js: '"use client";' },
+export default defineConfig(options => [
+  // react
+  {
+    entry: {
+      'react/index': 'src/react/index.ts',
     },
+    format: ['cjs', 'esm'],
+    dts: true,
+    target: 'es2022',
+    treeshake: true,
+    external: ['react', 'react/jsx-runtime'],
+    minify: !options.watch,
+    banner: { js: '"use client";' },
+  },
 
-    // vue
-    {
-      entry: {
-        'vue/index': 'src/vue/index.ts',
-      },
-      format: ['cjs', 'esm'],
-      dts: true,
-      target: 'es2022',
-      treeshake: true,
-      external: ['vue'],
-      minify: !options.watch,
+  // vue
+  {
+    entry: {
+      'vue/index': 'src/vue/index.ts',
     },
+    format: ['cjs', 'esm'],
+    dts: true,
+    target: 'es2022',
+    treeshake: true,
+    external: ['vue'],
+    minify: !options.watch,
+  },
 
-    // svelte
-    {
-      entry: {
-        'svelte/index': 'src/svelte/types.ts',
-      },
-      format: ['cjs', 'esm'],
-      dts: {
-        only: true,
-      },
-      external: ['svelte'],
+  // svelte
+  {
+    entry: {
+      'svelte/index': 'src/svelte/types.ts',
     },
-  ]
-
-  return configs
-})
+    format: ['cjs', 'esm'],
+    dts: {
+      only: true,
+    },
+    external: ['svelte'],
+  },
+] as const)
