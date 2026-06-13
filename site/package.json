@@ -1,0 +1,31 @@
+{
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite dev",
+    "preview": "vite preview",
+    "prepare": "svelte-kit sync || echo ''"
+  },
+  "dependencies": {
+    "@fontsource/dm-mono": "^5.2.7",
+    "@fontsource/pretendard": "^5.2.5",
+    "@numeric-text/svelte": "^0.1.4",
+    "@types/node": "^25.9.3"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^9.0.0",
+    "@sveltejs/adapter-static": "latest",
+    "@sveltejs/kit": "latest",
+    "@tailwindcss/vite": "^4.3.1",
+    "eslint": "^10.3.0",
+    "eslint-plugin-format": "^2.0.1",
+    "eslint-plugin-svelte": "^3.17.1",
+    "svelte": "latest",
+    "svelte-eslint-parser": "^1.6.1",
+    "tailwind-color-pairings": "^0.1.2",
+    "tailwindcss": "^4.3.1",
+    "typescript": "latest",
+    "vite": "latest"
+  }
+}
