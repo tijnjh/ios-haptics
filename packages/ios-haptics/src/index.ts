@@ -1,10 +1,10 @@
 export const supportsHaptics
-  = typeof window === 'undefined'
+  = typeof window === 'undefined' || typeof window.matchMedia !== 'function'
     ? false
     : window.matchMedia('(pointer: coarse)').matches
 
 /** INTERNAL */
-export function triggerAndroidHaptic() {
+export function _triggerAndroidHaptic() {
   try {
     if (!supportsHaptics)
       return
@@ -67,6 +67,19 @@ _haptic.error = () => {
   setTimeout(_haptic, 240)
 }
 
+/**
+ * @deprecated no longer works in newer ios versions, use the component instead
+ *
+ * @example
+ * ```tsx
+ *  import { HapticTrigger } from 'ios-haptics/(react|svelte|vue)'
+ *
+ * <HapticTrigger>
+ *  click me
+ * </HapticTrigger>
+ *
+ */
+// prevent intellisense from being unhelpful
 interface haptic {
   /** @deprecated */
   apply: never
@@ -108,10 +121,6 @@ interface haptic {
   error: () => void
 }
 
-/**
- * @deprecated
- * doesn't work in safari 26.5 and above, use the framework-specific HapticTrigger component instead
- */
 const __haptic = _haptic as haptic
 
 export { __haptic as haptic }

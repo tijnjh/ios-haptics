@@ -1,0 +1,103 @@
+{
+  "name": "ios-haptics",
+  "version": "2.0.0",
+  "description": "haptic feedback for ios safari",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tijnjh/ios-haptics.git",
+    "directory": "packages/ios-haptics"
+  },
+  "keywords": [
+    "haptic",
+    "haptics",
+    "ios",
+    "feedback",
+    "haptic-feedback",
+    "taptic",
+    "safari",
+    "vibrate"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+   "types": {
+        "import": "./dist/react/index.d.mts",
+        "require": "./dist/react/index.d.ts"
+      },
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./react": {
+      "types": {
+        "import": "./dist/react/index.d.mts",
+        "require": "./dist/react/index.d.ts"
+      },
+      "import": "./dist/react/index.mjs",
+      "require": "./dist/react/index.js"
+    },
+    "./vue": {
+      "types": {
+        "import": "./dist/vue/index.d.mts",
+        "require": "./dist/vue/index.d.ts"
+      },
+      "import": "./dist/vue/index.mjs",
+      "require": "./dist/vue/index.js"
+    },
+    "./svelte": {
+      "types": {
+        "import": "./dist/svelte/index.d.mts",
+        "require": "./dist/svelte/index.d.ts"
+      },
+      "svelte": "./dist/svelte/index.mjs",
+      "import": "./dist/svelte/index.mjs",
+      "require": "./dist/svelte/index.js"
+    }
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "build": "tsup && node scripts/build-svelte.mjs",
+    "dev": "tsup --watch"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
+    "svelte": ">=5",
+    "vue": ">=3"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    },
+    "svelte": {
+      "optional": true
+    },
+    "vue": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^9.0.0",
+    "@eslint-react/eslint-plugin": "^5.6.0",
+    "@types/react": "^19.2.17",
+    "eslint": "^10.3.0",
+    "eslint-plugin-format": "^2.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "eslint-plugin-svelte": "^3.17.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "svelte": "^5.56.3",
+    "svelte-eslint-parser": "^1.6.1",
+    "tsup": "^8.5.1",
+    "typescript": "5",
+    "vue": "^3.5.38"
+  }
+}

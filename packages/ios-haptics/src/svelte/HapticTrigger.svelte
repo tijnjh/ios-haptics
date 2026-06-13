@@ -1,15 +1,14 @@
 <script lang='ts' generics="T extends keyof SvelteHTMLElements">
   import type { SvelteHTMLElements } from 'svelte/elements'
+  import { _triggerAndroidHaptic } from '..'
+  import { HapticTriggerProps } from './types'
 
   const {
     as,
     ontap,
     children,
     ...props
-  }: {
-    as?: T
-    ontap?: () => void
-  } & SvelteHTMLElements[T] = $props()
+  }: HapticTriggerProps<T> = $props()
 </script>
 
 <svelte:element
@@ -37,7 +36,10 @@
       touch-action: manipulation;
     '
     type='checkbox'
-    onchange={ontap}
+    onchange={() => {
+      _triggerAndroidHaptic()
+      ontap?.()
+    }}
     // @ts-expect-error - unrecognized attribute
     switch
   />

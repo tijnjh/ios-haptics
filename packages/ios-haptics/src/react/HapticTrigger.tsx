@@ -1,14 +1,13 @@
-import type { ComponentPropsWithoutRef, ElementType } from 'react'
+import type { ElementType } from 'react'
+import type { HapticTriggerProps } from './types'
+import { _triggerAndroidHaptic } from '..'
 
 export default function HapticTrigger<T extends ElementType>({
   as,
   onTap,
   children,
   ...props
-}: {
-  as?: T
-  onTap?: () => void
-} & ComponentPropsWithoutRef<T>) {
+}: HapticTriggerProps<T>) {
   const Tag = as ?? 'button'
 
   return (
@@ -36,7 +35,10 @@ export default function HapticTrigger<T extends ElementType>({
           touchAction: 'manipulation',
         }}
         type="checkbox"
-        onChange={onTap}
+        onChange={() => {
+          _triggerAndroidHaptic()
+          onTap?.()
+        }}
         // @ts-expect-error - unrecognized attribute
         switch=""
       />
