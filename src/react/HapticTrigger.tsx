@@ -1,17 +1,45 @@
-import type { ReactNode } from 'react'
-import { triggerAndroidHaptic } from '..'
+import type { ComponentPropsWithoutRef, ElementType } from 'react'
 
-export default function HapticTrigger({ children }: { children: ReactNode }) {
+export default function HapticTrigger<T extends ElementType>({
+  as,
+  onTap,
+  children,
+  ...props
+}: {
+  as?: T
+  onTap?: () => void
+} & ComponentPropsWithoutRef<T>) {
+  const Tag = as ?? 'button'
+
   return (
-    <label>
-      <input
-        type="checkbox"
-        // @ts-expect-error ...
-        switch
-        onChange={triggerAndroidHaptic}
-        style={{ display: 'none' }}
-      />
+    <Tag
+      {...props}
+      style={{
+        position: 'relative',
+        display: 'inline-flex',
+      }}
+    >
       {children}
-    </label>
+
+      <input
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          margin: 0,
+          opacity: 0,
+          cursor: 'pointer',
+          clipPath: 'inset(0 round 999px)',
+          WebkitTapHighlightColor: 'transparent',
+          touchAction: 'manipulation',
+        }}
+        type="checkbox"
+        onChange={onTap}
+        // @ts-expect-error - unrecognized attribute
+        switch=""
+      />
+    </Tag>
   )
 }
