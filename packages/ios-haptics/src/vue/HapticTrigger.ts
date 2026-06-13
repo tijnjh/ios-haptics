@@ -1,6 +1,5 @@
 import type { HapticTriggerProps } from './types'
 import { defineComponent, h } from 'vue'
-import { _triggerAndroidHaptic } from '..'
 
 export default defineComponent({
   name: 'HapticTrigger',
@@ -43,10 +42,7 @@ export default defineComponent({
               WebkitTapHighlightColor: 'transparent',
               touchAction: 'manipulation',
             },
-            onChange: () => {
-              _triggerAndroidHaptic()
-              emit('tap')
-            },
+            onChange: emit('tap'),
           }),
         ],
       )
