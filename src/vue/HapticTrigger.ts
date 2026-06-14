@@ -42,7 +42,7 @@ export default defineComponent({
               WebkitTapHighlightColor: 'transparent',
               touchAction: 'manipulation',
             },
-            onChange: emit('tap'),
+            onChange: () => emit('tap'),
           }),
         ],
       )
