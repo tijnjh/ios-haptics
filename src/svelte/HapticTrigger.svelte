@@ -1,13 +1,11 @@
-<script lang='ts' generics="T extends keyof SvelteHTMLElements">
-  import type { SvelteHTMLElements } from 'svelte/elements'
-  import { HapticTriggerProps } from './types'
-
+<script>
+  /** @type {import("./types.ts").HapticTriggerProps<any>} */
   const {
     as,
     ontap,
     children,
     ...props
-  }: HapticTriggerProps<T> = $props()
+  } = $props()
 </script>
 
 <svelte:element

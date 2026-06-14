@@ -1,6 +1,6 @@
 {
   "name": "ios-haptics",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "haptic feedback for ios safari",
   "license": "MIT",
   "repository": {
@@ -21,9 +21,9 @@
   "sideEffects": false,
   "exports": {
     ".": {
-   "types": {
-        "import": "./dist/react/index.d.mts",
-        "require": "./dist/react/index.d.ts"
+      "types": {
+        "import": "./dist/index.d.mts",
+        "require": "./dist/index.d.ts"
       },
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
