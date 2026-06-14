@@ -67,18 +67,6 @@ _haptic.error = () => {
   setTimeout(_haptic, 240)
 }
 
-/**
- * @deprecated no longer works in newer ios versions, use the component instead
- *
- * @example
- * ```tsx
- *  import { HapticTrigger } from 'ios-haptics/(react|svelte|vue)'
- *
- * <HapticTrigger>
- *  click me
- * </HapticTrigger>
- *
- */
 // prevent intellisense from being unhelpful
 interface haptic {
   /** @deprecated */
@@ -121,6 +109,18 @@ interface haptic {
   error: () => void
 }
 
+/**
+ * @deprecated no longer works in newer ios versions, use the component instead
+ *
+ * @example
+ * ```tsx
+ *  import { HapticTrigger } from 'ios-haptics/(react|svelte|vue)'
+ *
+ * <HapticTrigger>
+ *  click me
+ * </HapticTrigger>
+ *
+ */
 const __haptic = _haptic as haptic
 
 export { __haptic as haptic }
