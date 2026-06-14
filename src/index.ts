@@ -119,7 +119,7 @@ interface haptic {
  * <HapticTrigger>
  *  click me
  * </HapticTrigger>
- *
+ *```
  */
 const __haptic = _haptic as haptic
 
