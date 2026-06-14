@@ -5,8 +5,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tijnjh/ios-haptics.git",
-    "directory": "packages/ios-haptics"
+    "url": "git+https://github.com/tijnjh/ios-haptics.git"
   },
   "keywords": [
     "haptic",
