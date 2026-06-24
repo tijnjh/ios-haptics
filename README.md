@@ -17,43 +17,39 @@ npm i ios-haptics
 
 ## 🚀 usage
 
-```tsx
-import { HapticTrigger } from 'ios-haptics/react'
-
-<HapticTrigger>
-  tap me
-</HapticTrigger>
+```javascript
+import { hapticTrigger } from 'ios-haptics'
 ```
 
-```vue
-<script setup>
-import { HapticTrigger } from 'ios-haptics/vue'
-</script>
 
-<template>
-  <HapticTrigger>
-    tap me
-  </HapticTrigger>
-</template>
+vanilla
+```javascript
+const element = document.getElementById('element')
+
+hapticTrigger(element)
 ```
 
-```svelte
-<script>
-  import { HapticTrigger } from 'ios-haptics/svelte'
-</script>
-
-<HapticTrigger>
-  tap me
-</HapticTrigger>
+svelte
+```html
+<button {@attach hapticTrigger}>click me</button>
 ```
+
+react
+```html
+<button ref={hapticTrigger}>click me</button>
+```
+
+vue
+```html
+<button :ref="hapticTrigger">click me</button>
+```
+
 
 ## ⚙️ how it works
 
 this uses the `<input type="checkbox" switch />` (introduced in safari 17.4), which has haptic feedback when toggled
 
-`HapticTrigger` renders one of those on top of your element, so when the user taps it, safari triggers the native haptic feedback
-
-the old `haptic()` api is deprecated and no longer works reliably on newer ios versions
+`hapticTrigger` renders one of those on top of your element, so when the user taps it, safari triggers the native haptic feedback
 
 ---
 

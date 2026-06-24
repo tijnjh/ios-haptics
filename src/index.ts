@@ -1,126 +1,29 @@
-export const supportsHaptics
-  = typeof window === 'undefined' || typeof window.matchMedia !== 'function'
-    ? false
-    : window.matchMedia('(pointer: coarse)').matches
+export function hapticTrigger(element: HTMLElement | undefined | null) {
+  if (!element) return;
 
-/** INTERNAL */
-export function _triggerAndroidHaptic() {
-  try {
-    if (!supportsHaptics)
-      return
+  const switchEl = document.createElement("input");
 
-    if (navigator.vibrate) {
-      navigator.vibrate(50)
-    }
-  }
-  catch {
-    // do nothing
-  }
+  switchEl.type = "checkbox";
+  switchEl.setAttribute("switch", "");
+
+  const styles = {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    margin: 0,
+    opacity: 0,
+    cursor: "pointer",
+    clipPath: "inset(0 round 999px)",
+    touchAction: "manipulation",
+  };
+
+  Object.assign(switchEl.style, styles);
+
+  switchEl.style.setProperty("-webkit-tap-highlight-color", "transparent");
+
+  element.style.position = "relative";
+
+  element.insertAdjacentElement("beforeend", switchEl);
 }
-
-function _haptic() {
-  try {
-    if (navigator.vibrate) {
-      navigator.vibrate(50)
-      return
-    }
-
-    if (!supportsHaptics)
-      return
-
-    const labelEl = document.createElement('label')
-    labelEl.ariaHidden = 'true'
-    labelEl.style.display = 'none'
-
-    const inputEl = document.createElement('input')
-    inputEl.type = 'checkbox'
-    inputEl.setAttribute('switch', '')
-    labelEl.appendChild(inputEl)
-
-    document.head.appendChild(labelEl)
-    labelEl.click()
-    document.head.removeChild(labelEl)
-  }
-  catch {
-    // do nothing
-  }
-}
-
-_haptic.confirm = () => {
-  if (navigator.vibrate) {
-    navigator.vibrate([50, 70, 50])
-    return
-  }
-
-  _haptic()
-  setTimeout(_haptic, 120)
-}
-
-_haptic.error = () => {
-  if (navigator.vibrate) {
-    navigator.vibrate([50, 70, 50, 70, 50])
-    return
-  }
-
-  _haptic()
-  setTimeout(_haptic, 120)
-  setTimeout(_haptic, 240)
-}
-
-// prevent intellisense from being unhelpful
-interface haptic {
-  /** @deprecated */
-  apply: never
-
-  /** @deprecated */
-  arguments: never
-
-  /** @deprecated */
-  bind: never
-
-  /** @deprecated */
-  call: never
-
-  /** @deprecated */
-  caller: never
-
-  /** @deprecated */
-  length: never
-
-  /** @deprecated */
-  name: never
-
-  /** @deprecated */
-  prototype: never
-
-  /** @deprecated */
-  toString: never
-
-  /** @deprecated */
-  Symbol: never
-
-  /**  a single haptic */
-  (): void
-
-  /** two rapid haptics */
-  confirm: () => void
-
-  /** three rapid haptics */
-  error: () => void
-}
-
-/**
- * @deprecated no longer works in newer ios versions, use the component instead
- *
- * @example
- * ```tsx
- *  import { HapticTrigger } from 'ios-haptics/(react|svelte|vue)'
- *
- * <HapticTrigger>
- *  click me
- * </HapticTrigger>
- *```
- */
-const __haptic = _haptic as haptic
-
-export { __haptic as haptic }

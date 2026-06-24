@@ -1,16 +1,20 @@
 {
   "compilerOptions": {
-    "jsx": "preserve",
-    "lib": ["DOM", "ES2022", "DOM.Iterable"],
+    "target": "es2022",
+    "lib": ["es2022", "dom", "dom.iterable"],
     "moduleDetection": "force",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "checkJs": true,
+    "module": "preserve",
+    "resolveJsonModule": true,
+    "allowJs": true,
     "strict": true,
+    "noImplicitOverride": true,
     "noUncheckedIndexedAccess": true,
     "noEmit": true,
     "esModuleInterop": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
     "skipLibCheck": true
   },
-  "include": [".eslintrc.cjs", "src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/**/*.d.ts"]
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
