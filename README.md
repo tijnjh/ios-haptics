@@ -2,6 +2,8 @@
 
 javascript library for haptic feedback inside of safari on ios
 
+please note this only works on ios 17.4 to 26.4, as apple patched it in ios 26.5
+
 ![GitHub last commit](https://img.shields.io/github/last-commit/tijnjh/ios-haptics)
 [![npm version](https://img.shields.io/npm/v/ios-haptics.svg)](https://npmjs.com/package/ios-haptics)
 ![NPM Downloads](https://img.shields.io/npm/dm/ios-haptics)
