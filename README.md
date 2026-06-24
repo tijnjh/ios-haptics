@@ -20,28 +20,38 @@ npm i ios-haptics
 ## 🚀 usage
 
 ```javascript
-import { haptic } from 'ios-haptics'
-
-// a single haptic
-haptic()
-
-// two rapid haptics
-haptic.confirm()
-
-// three rapid haptics
-haptic.error()
+import { hapticTrigger } from 'ios-haptics'
 ```
+
+
+vanilla
+```javascript
+const element = document.getElementById('element')
+
+hapticTrigger(element)
+```
+
+svelte
+```html
+<button {@attach hapticTrigger}>click me</button>
+```
+
+react
+```html
+<button ref={hapticTrigger}>click me</button>
+```
+
+vue
+```html
+<button :ref="hapticTrigger">click me</button>
+```
+
 
 ## ⚙️ how it works
 
 this uses the `<input type="checkbox" switch />` (introduced in safari 17.4), which has haptic feedback when toggled
 
-> [!IMPORTANT]
-> apple patched the bug this library used for haptic feedback in ios 26.5. you can no longer trigger haptic feedback programmatically by calling `.click()` on a `<label>` that is `for` an `<input type="checkbox" switch />`. haptic feedback still works when the user directly clicks the checkbox switch themselves, but it can no longer be done programmatically.
-
-every `haptic` call, it will create one of those in the background, toggle it, then remove it
-
-on devices that support it, `navigator.vibrate()` is called instead, so it works on android too
+`hapticTrigger` renders one of those on top of your element, so when the user taps it, safari triggers the native haptic feedback
 
 ---
 

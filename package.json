@@ -1,13 +1,17 @@
 {
   "name": "ios-haptics",
   "type": "module",
-  "version": "0.1.5",
+  "version": "3.0.0",
   "description": "haptic feedback for ios safari",
   "author": "tijnjh",
   "license": "MIT",
-  "repository": "tijnjh/ios-haptics",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tijnjh/ios-haptics.git"
+  },
   "keywords": [
     "haptic",
+    "haptics",
     "ios",
     "feedback",
     "haptic-feedback",
@@ -28,10 +32,11 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsdown",
-    "dev": "tsdown --watch"
+    "build": "tsdown"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^9.0.0",
+    "eslint": "^10.5.0",
     "tsdown": "latest"
   }
 }

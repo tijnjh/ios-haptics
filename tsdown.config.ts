@@ -9,8 +9,9 @@ const banner = `/**
 **/`
 
 export default defineConfig({
-  entry: ['./src/index.ts', './src/index.d.ts'],
+  entry: './src/index.ts',
   platform: 'neutral',
   outputOptions: { banner },
   dts: true,
+  minify: true,
 })

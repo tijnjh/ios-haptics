@@ -1,97 +1,29 @@
-export const supportsHaptics =
-  typeof window === "undefined" || typeof window.matchMedia !== "function"
-    ? false
-    : window.matchMedia("(pointer: coarse)").matches;
+export function hapticTrigger(element: HTMLElement | undefined | null) {
+  if (!element) return;
 
-function _haptic() {
-  try {
-    if (navigator.vibrate) {
-      navigator.vibrate(50);
-      return;
-    }
+  const switchEl = document.createElement("input");
 
-    if (!supportsHaptics) return;
+  switchEl.type = "checkbox";
+  switchEl.setAttribute("switch", "");
 
-    const labelEl = document.createElement("label");
-    labelEl.ariaHidden = "true";
-    labelEl.style.display = "none";
+  const styles = {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    margin: 0,
+    opacity: 0,
+    cursor: "pointer",
+    clipPath: "inset(0 round 999px)",
+    touchAction: "manipulation",
+  };
 
-    const inputEl = document.createElement("input");
-    inputEl.type = "checkbox";
-    inputEl.setAttribute("switch", "");
-    labelEl.appendChild(inputEl);
+  Object.assign(switchEl.style, styles);
 
-    document.head.appendChild(labelEl);
-    labelEl.click();
-    document.head.removeChild(labelEl);
-  } catch {
-    // do nothing
-  }
+  switchEl.style.setProperty("-webkit-tap-highlight-color", "transparent");
+
+  element.style.position = "relative";
+
+  element.insertAdjacentElement("beforeend", switchEl);
 }
-
-_haptic.confirm = () => {
-  if (navigator.vibrate) {
-    navigator.vibrate([50, 70, 50]);
-    return;
-  }
-
-  _haptic();
-  setTimeout(() => _haptic(), 120);
-};
-
-_haptic.error = () => {
-  if (navigator.vibrate) {
-    navigator.vibrate([50, 70, 50, 70, 50]);
-    return;
-  }
-
-  _haptic();
-  setTimeout(() => _haptic(), 120);
-  setTimeout(() => _haptic(), 240);
-};
-
-// prevent intellisense from being unhelpful
-interface haptic {
-  /** @deprecated */
-  apply: never;
-
-  /** @deprecated */
-  arguments: never;
-
-  /** @deprecated */
-  bind: never;
-
-  /** @deprecated */
-  call: never;
-
-  /** @deprecated */
-  caller: never;
-
-  /** @deprecated */
-  length: never;
-
-  /** @deprecated */
-  name: never;
-
-  /** @deprecated */
-  prototype: never;
-
-  /** @deprecated */
-  toString: never;
-
-  /** @deprecated */
-  Symbol: never;
-
-  /**  a single haptic */
-  (): void;
-
-  /** two rapid haptics */
-  confirm: () => void;
-
-  /** three rapid haptics */
-  error: () => void;
-}
-
-const __haptic = _haptic as haptic;
-
-export { __haptic as haptic };
