@@ -1,29 +1,45 @@
+import { isIos } from './utils'
+
 export function hapticTrigger(element: HTMLElement | undefined | null) {
-  if (!element) return;
+  if (!element || typeof window === 'undefined') {
+    return
+  }
 
-  const switchEl = document.createElement("input");
+  if ('vibrate' in navigator) {
+    navigator.vibrate(50)
+    return
+  }
 
-  switchEl.type = "checkbox";
-  switchEl.setAttribute("switch", "");
+  if (!isIos()) {
+    return
+  }
 
-  const styles = {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    margin: 0,
-    opacity: 0,
-    cursor: "pointer",
-    clipPath: "inset(0 round 999px)",
-    touchAction: "manipulation",
-  };
+  const switchEl = document.createElement('input')
 
-  Object.assign(switchEl.style, styles);
+  switchEl.type = 'checkbox'
+  switchEl.setAttribute('switch', '')
+  switchEl.setAttribute('data-haptic-trigger', '')
+  switchEl.setAttribute('aria-hidden', 'true')
+  switchEl.tabIndex = -1
 
-  switchEl.style.setProperty("-webkit-tap-highlight-color", "transparent");
+  const styles: Partial<CSSStyleDeclaration> = {
+    position: 'absolute',
+    inset: '0',
+    width: '100%',
+    height: '100%',
+    margin: '0',
+    opacity: '0',
+    clipPath: 'inset(0 round 999px)',
+    touchAction: 'manipulation',
+  }
 
-  element.style.position = "relative";
+  Object.assign(switchEl.style, styles)
 
-  element.insertAdjacentElement("beforeend", switchEl);
+  switchEl.style.setProperty('-webkit-tap-highlight-color', 'transparent')
+
+  if (getComputedStyle(element).position === 'static') {
+    element.style.position = 'relative'
+  }
+
+  element.insertAdjacentElement('beforeend', switchEl)
 }
