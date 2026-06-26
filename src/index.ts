@@ -5,11 +5,6 @@ export function hapticTrigger(element: HTMLElement | undefined | null) {
     return
   }
 
-  if ('vibrate' in navigator) {
-    navigator.vibrate(50)
-    return
-  }
-
   if (!isIos()) {
     return
   }
