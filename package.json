@@ -1,7 +1,7 @@
 {
   "name": "ios-haptics",
   "type": "module",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "haptic feedback for ios safari",
   "author": "tijnjh",
   "license": "MIT",
@@ -32,11 +32,13 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsdown"
+    "build": "tsdown",
+    "lint": "eslint ."
   },
   "devDependencies": {
     "@antfu/eslint-config": "^9.0.0",
     "eslint": "^10.5.0",
-    "tsdown": "latest"
+    "tsdown": "latest",
+    "typescript": "^6.0.3"
   }
 }

@@ -17,6 +17,9 @@ importers:
       tsdown:
         specifier: latest
         version: 0.22.3(typescript@6.0.3)
+      typescript:
+        specifier: ^6.0.3
+        version: 6.0.3
 
 packages:
 

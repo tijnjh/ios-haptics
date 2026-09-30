@@ -1,51 +1,46 @@
-import { isIos } from './utils'
+import { h, isIos } from './utils'
 
 export function hapticTrigger(element: HTMLElement | undefined | null) {
-  if (!element || typeof window === 'undefined') {
+  if (
+    !element
+    || typeof window === 'undefined'
+    || !isIos()
+    || element.querySelector(':scope > [data-haptic-trigger]')
+  ) {
     return
   }
 
-  if (!isIos()) {
-    return
-  }
+  const labelEl = h('label', {
+    ariaHidden: 'true',
+    styles: {
+      position: 'absolute',
+      inset: '0',
+      touchAction: 'manipulation',
+      webkitTapHighlightColor: 'transparent',
+    },
+  })
 
-  if (element.querySelector(':scope > [data-haptic-trigger]')) {
-    return
-  }
+  const switchEl = h('input', {
+    type: 'checkbox',
 
-  const labelEl = document.createElement('label')
+    // the switch must never sit under the finger
+    // webkit marks a touchstart on it as handled, which cancels scrolling
+    styles: {
+      position: 'absolute',
+      width: '1px',
+      height: '1px',
+      margin: '0',
+      visibility: 'hidden',
+    },
 
-  labelEl.setAttribute('data-haptic-trigger', '')
-  labelEl.setAttribute('aria-hidden', 'true')
+    // the label re-dispatches its click to the switch
+    // keep that copy from reaching the element's click handlers a second time
+    onclick: event => event.stopPropagation(),
+  })
 
-  const labelStyles: Partial<CSSStyleDeclaration> = {
-    position: 'absolute',
-    inset: '0',
-    touchAction: 'manipulation',
-  }
+  labelEl.dataset.hapticTrigger = ''
 
-  Object.assign(labelEl.style, labelStyles)
-
-  labelEl.style.setProperty('-webkit-tap-highlight-color', 'transparent')
-
-  const switchEl = document.createElement('input')
-
-  switchEl.type = 'checkbox'
   switchEl.setAttribute('switch', '')
-
-  // The switch must never sit under the finger: WebKit marks a touchstart on it as handled, which cancels scrolling.
-  const switchStyles: Partial<CSSStyleDeclaration> = {
-    position: 'absolute',
-    width: '1px',
-    height: '1px',
-    margin: '0',
-    visibility: 'hidden',
-  }
-
-  Object.assign(switchEl.style, switchStyles)
-
-  // The label re-dispatches its click to the switch; keep that copy from reaching the element's click handlers a second time.
-  switchEl.addEventListener('click', event => event.stopPropagation())
 
   labelEl.append(switchEl)
 
@@ -53,5 +48,5 @@ export function hapticTrigger(element: HTMLElement | undefined | null) {
     element.style.position = 'relative'
   }
 
-  element.insertAdjacentElement('beforeend', labelEl)
+  element.append(labelEl)
 }
