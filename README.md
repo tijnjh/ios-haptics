@@ -49,9 +49,13 @@ vue
 
 this uses the `<input type="checkbox" switch />` (introduced in safari 17.4), which has haptic feedback when toggled
 
-`hapticTrigger` renders a transparent `<label>` on top of your element, wired to a hidden switch. when the user taps the element, the label forwards the tap to the switch as a trusted click, and safari triggers the native haptic feedback
+`hapticTrigger` renders a transparent `<label>` on top of your element, wired to one hidden switch shared by the whole page. when the user taps the element, the label forwards the tap to the switch as a trusted click, and safari triggers the native haptic feedback
 
 the switch itself never sits under the finger, so scroll gestures that start on the element still scroll the page
+
+links, submit buttons and client-side router links (which call `preventDefault()`) keep working as before, and disabled elements don't buzz
+
+`hapticTrigger` returns a cleanup function that removes the label, which react 19 refs and svelte attachments call automatically
 
 ---
 
